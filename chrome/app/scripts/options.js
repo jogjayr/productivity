@@ -4,17 +4,10 @@ var LazyHacker = angular.module('LazyHacker', {});
 
 
 
-LazyHacker.controller('OnboardController', function($scope) {
-    $scope.banned = [{
-        name: 'Facebook',
-        hostname: 'facebook.com'
-    }, {
-        name: 'Twitter',
-        hostname: 'twitter.com'
-    }, {
-        name: 'Tumblr',
-        hostname: 'tumblr.com'
-    }];
+LazyHacker.controller('OnboardController', function($scope, OnboardService) {
+    OnboardService.getBanned().success(function(data) {
+        $scope.banned = data;
+    })
 
     $scope.saveBanned = function() {
         var rules = buildRules(this.banned.filter(function(site) {
@@ -41,5 +34,13 @@ LazyHacker.controller('OnboardController', function($scope) {
                 hostSuffix: host.hostname
             };
         });
+    }
+});
+
+LazyHacker.service('OnboardService', function($http) {
+    return {
+        getBanned: function() {
+            return $http.get('/data/banned.json');
+        }
     }
 });
