@@ -14,12 +14,12 @@
       "scripts/background.js"
     ]
   },
-  "page_action": {
+  "browser_action": {
     "default_icon": {
       "19": "images/icon-19.png",
       "38": "images/icon-38.png"
     },
-    "default_title": "Keystone Habits",
+    "default_title": "uu",
     "default_popup": "popup.html"
   },
   "options_page": "options.html",
@@ -38,7 +38,9 @@
   ],
   "permissions": [
     "tabs",
+    "history",
     "http://*/*",
-    "https://*/*"
+    "https://*/*",
+    "webNavigation"
   ]
 }
