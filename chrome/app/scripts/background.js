@@ -17,9 +17,13 @@ chrome.runtime.onInstalled.addListener(function(details) {
         //ensures no nav takes place if forbidden iframe exists
         if (e.parentFrameId !== 0) {
             console.log(e);
-            chrome.tabs.update(e.tabId, {url: '/options.html'});
+            chrome.tabs.update(e.tabId, {url: '/alternatives.html'});
         }
     }, {
         url: rules
     });
+
+    chrome.tabs.create({
+        url: '/options.html'
+    })
 });
