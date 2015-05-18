@@ -1,3 +1,9 @@
 body {
   padding: 20px;
 }
+
+.container {
+    display: flex;
+}
+
+
