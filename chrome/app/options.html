@@ -17,13 +17,13 @@
         <h2 class='container-item'>Thanks for installing Lazy Hacker</h2>
         <div class="container-item" ng-controller='OnboardController'>
             <p>Select some websites to avoid:</p>
-            <form action="">
+            <form>
                 
                 <p ng-repeat="site in banned">
-                    <input type='checkbox' id='{{site.name}}' />
-                        <label for='{{site.name}}'>{{site.name}}</label>
-                    
+                    <input type='checkbox' ng-model='site.checked' id='{{site.name}}' />
+                    <label for='{{site.name}}'>{{site.name}}</label>
                 </p>
+                <button ng-click='saveBanned();'>Save</button>
             </form>
         </div>
     </div>
