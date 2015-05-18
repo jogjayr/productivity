@@ -7,4 +7,28 @@
 }, {
     "name": "Tumblr",
     "hostname": "tumblr.com"
-}]
+}, {
+    "name": "Pinterest",
+    "hostname": "pinterest.com"
+}, {
+    "name": "Hacker News",
+    "hostname": "news.ycombinator.com"
+}, {
+    "name": "CNN",
+    "hostname": "cnn.com"
+},  {
+    "name": "New York Times",
+    "hostname": "nytimes.com"
+},  {
+    "name": "Quora",
+    "hostname": "quora.com"
+},  {
+    "name": "Travel StackExchange",
+    "hostname": "travel.stackexchange.com"
+},  {
+    "name": "Personal Finance StackExchange",
+    "hostname": "money.stackexchange.com"
+},  {
+    "name": "Workplace StackExchange",
+    "hostname": "workplace.stackexchange.com"
+}, ]
