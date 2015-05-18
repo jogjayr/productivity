@@ -1,3 +1,14 @@
 'use strict';
 
-console.log('\'Allo \'Allo! Option');
+var LazyHacker = angular.module('LazyHacker', {});
+
+LazyHacker.controller('OnboardController', function ($scope) {
+    $scope.banned = [{
+        name: 'Facebook',
+        hostname: 'facebook.com'
+    }, {
+        name: 'Twitter',
+        hostname: 'twitter.com'
+    }];
+
+});
