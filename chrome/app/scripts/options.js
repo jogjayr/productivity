@@ -50,6 +50,9 @@ LazyHacker.service('OnboardService', function($http) {
     return {
         getBanned: function() {
             return $http.get('/data/banned.json');
+        },
+        getGithub: function(username) {
+            return $http.get('https://api.github.com/users/' + username + '/starred/');
         }
     }
 });
