@@ -18,7 +18,7 @@
         <div class="container-item" ng-controller='OnboardController'>
             <p>Select some websites to avoid:</p>
             <form>
-                
+                <button ng-click='toggleSelectAll();'>Select {{selectWhat}}</button>
                 <p ng-repeat="site in banned">
                     <input type='checkbox' ng-model='site.checked' id='{{site.name}}' />
                     <label for='{{site.name}}'>{{site.name}}</label>

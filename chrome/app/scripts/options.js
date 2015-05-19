@@ -7,7 +7,7 @@ var LazyHacker = angular.module('LazyHacker', {});
 LazyHacker.controller('OnboardController', function($scope, OnboardService) {
     OnboardService.getBanned().success(function(data) {
         $scope.banned = data;
-    })
+    });
 
     $scope.saveBanned = function() {
         var rules = buildRules(this.banned.filter(function(site) {
@@ -35,6 +35,15 @@ LazyHacker.controller('OnboardController', function($scope, OnboardService) {
             };
         });
     }
+    var allSelected = false;
+    $scope.selectWhat = 'All';
+    $scope.toggleSelectAll = function() {
+        this.selectWhat = allSelected ? 'All' : 'None';
+        allSelected = !allSelected;
+        this.banned.map(function(site) {
+            site.checked = allSelected;
+        });
+    };
 });
 
 LazyHacker.service('OnboardService', function($http) {
