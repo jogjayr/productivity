@@ -6,35 +6,9 @@ LazyHacker.controller('OnboardController', function($scope, OnboardService) {
     });
 
     $scope.saveBanned = function() {
-        var rules = buildRules(this.banned.filter(function(site) {
-            return site.checked;
-        }));
-        chrome.webNavigation.onBeforeNavigate.addListener(function(e) {
-            //ensures no nav takes place if forbidden iframe exists
-            if (e.parentFrameId !== 0) {
-                console.log(e);
-                chrome.tabs.update(e.tabId, {
-                    url: '/alternatives.html'
-                });
-            }
-        }, {
-            url: rules
-        });
-
-        chrome.tabs.getCurrent(function(tabData) {
-            chrome.tabs.update(tabData.id, {url: '/select-sources.html'});
-        })
+        OnboardService.saveBanned(this.banned);
     };
 
-
-
-    function buildRules(hosts) {
-        return hosts.map(function(host) {
-            return {
-                hostSuffix: host.hostname
-            };
-        });
-    }
     var allSelected = false;
     $scope.selectWhat = 'All';
     $scope.toggleSelectAll = function() {
@@ -50,4 +24,34 @@ LazyHacker.service('OnboardService', function($http) {
     this.getBanned = function() {
         return $http.get('/data/banned.json');
     };
+
+    function buildRules(hosts) {
+        return hosts.map(function(host) {
+            return {
+                hostSuffix: host.hostname
+            };
+        });
+    }
+    this.saveBanned = function(banned) {
+        var rules = buildRules(banned.filter(function(site) {
+            return site.checked;
+        }));
+        chrome.webNavigation.onBeforeNavigate.addListener(function(e) {
+            //ensures no nav takes place if forbidden iframe exists
+            if (e.parentFrameId !== 0) {
+                console.log(e);
+                chrome.tabs.update(e.tabId, {
+                    url: '/alternatives.html'
+                });
+            }
+        }, {
+            url: rules
+        });
+
+        chrome.tabs.getCurrent(function(tabData) {
+            chrome.tabs.update(tabData.id, {
+                url: '/select-sources.html'
+            });
+        })
+    }
 });
