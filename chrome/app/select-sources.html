@@ -18,7 +18,11 @@
 
         <input type="text" id='gh-username' ng-model='githubUsername' placeholder='Github username'>
         <button ng-click='handleGithubSubmit();'>Next ></button> 
-        
+        <div>
+            <p ng-repeat='repo in githubStarred'>
+                {{repo.full_name}} - {{repo.description}}
+            </p>
+        </div>
     </div>
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->

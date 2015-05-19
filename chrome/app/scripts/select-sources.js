@@ -2,6 +2,7 @@ LazyHacker.controller('SourcesController', ['$scope', 'SourcesService', function
     $scope.handleGithubSubmit = function() {
         SourcesService.getGithubStarred(this.githubUsername).success(function(data) {
             console.log(data);
+            $scope.githubStarred = data;
         });
     };
 }]);
