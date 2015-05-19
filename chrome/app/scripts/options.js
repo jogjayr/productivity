@@ -1,9 +1,5 @@
 'use strict';
 
-var LazyHacker = angular.module('LazyHacker', {});
-
-
-
 LazyHacker.controller('OnboardController', function($scope, OnboardService) {
     OnboardService.getBanned().success(function(data) {
         $scope.banned = data;
@@ -54,9 +50,6 @@ LazyHacker.service('OnboardService', function($http) {
     return {
         getBanned: function() {
             return $http.get('/data/banned.json');
-        },
-        getGithub: function(username) {
-            return $http.get('https://api.github.com/users/' + username + '/starred/');
         }
-    }
+    };
 });
