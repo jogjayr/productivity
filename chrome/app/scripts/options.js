@@ -47,9 +47,7 @@ LazyHacker.controller('OnboardController', function($scope, OnboardService) {
 });
 
 LazyHacker.service('OnboardService', function($http) {
-    return {
-        getBanned: function() {
-            return $http.get('/data/banned.json');
-        }
+    this.getBanned = function() {
+        return $http.get('/data/banned.json');
     };
 });

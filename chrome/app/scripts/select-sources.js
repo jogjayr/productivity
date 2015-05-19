@@ -7,9 +7,9 @@ LazyHacker.controller('SourcesController', ['$scope', 'SourcesService', function
 }]);
 
 LazyHacker.service('SourcesService', ['$http', function($http) {
-    return {
-        getGithubStarred: function(username) {
-            return $http.get('https://api.github.com/users/' + username + '/starred');
-        }
+
+    this.getGithubStarred = function(username) {
+        return $http.get('https://api.github.com/users/' + username + '/starred');
     };
+
 }]);
