@@ -31,4 +31,16 @@
 },  {
     "name": "Workplace StackExchange",
     "hostname": "workplace.stackexchange.com"
-}, ]
+},  {
+    "name": "Techmeme",
+    "hostname": "techeme.com"
+}, {
+    "name": "BBC",
+    "hostname": "bbc.com"
+},  {
+    "name": "The Guardian",
+    "hostname": "theguardian.com"
+},  {
+    "name": "Cracked",
+    "hostname": "cracked.com"
+}]
