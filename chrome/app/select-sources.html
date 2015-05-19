@@ -13,15 +13,19 @@
 
 <body>
     <div class="container">
-        <h1>Lazy Hacker</h1>
-        
+        <h1>Pick some healthier browsing options:</h1>
+        <p>Enter your Github username</p>
+        <form action="">
+            <input type="text" id='gh-username' placeholder='Github username'>
+            <button ng-click='handleGithubSubmit();'>Next ></button> 
+        </form>
     </div>
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:js scripts/options.js -->
-    <script src="scripts/alternatives.js"></script>
+    <script src="scripts/select-sources.js"></script>
     <!-- endbuild -->
 </body>
 

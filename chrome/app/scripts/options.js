@@ -24,6 +24,10 @@ LazyHacker.controller('OnboardController', function($scope, OnboardService) {
         }, {
             url: rules
         });
+
+        chrome.tabs.getCurrent(function(tabData) {
+            chrome.tabs.update(tabData.id, {url: '/select-sources.html'});
+        })
     };
 
 
