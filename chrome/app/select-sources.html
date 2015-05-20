@@ -8,6 +8,7 @@
     <!-- endbuild -->
     <!-- build:css styles/main.css -->
     <link href="styles/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="bower_components/angular/angular-csp.css">
     <!-- endbuild -->
 </head>
 
@@ -17,12 +18,8 @@
         <p>Enter your Github username</p>
 
         <input type="text" id='gh-username' ng-model='githubUsername' placeholder='Github username'>
-        <button ng-click='handleGithubSubmit();'>Next ></button> 
-        <div>
-            <p ng-repeat='repo in githubStarred'>
-                {{repo.full_name}} - {{repo.description}}
-            </p>
-        </div>
+        <button ng-click='handleGithubSubmit();'>Submit</button>
+        <div ng-show="showThanks">Thanks! Enjoy more productive browsing!</div>
     </div>
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
