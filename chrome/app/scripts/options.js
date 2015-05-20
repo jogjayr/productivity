@@ -9,14 +9,9 @@ LazyHacker.controller('OnboardController', function($scope, OnboardService) {
         OnboardService.saveBanned(this.banned);
     };
 
-    var allSelected = false;
     $scope.selectWhat = 'All';
     $scope.toggleSelectAll = function() {
-        this.selectWhat = allSelected ? 'All' : 'None';
-        allSelected = !allSelected;
-        this.banned.map(function(site) {
-            site.checked = allSelected;
-        });
+        OnboardService.toggleSelectAll($scope);
     };
 });
 
@@ -24,6 +19,8 @@ LazyHacker.service('OnboardService', function($http) {
     this.getBanned = function() {
         return $http.get('/data/banned.json');
     };
+
+    var allSelected = false;
 
     function buildRules(hosts) {
         return hosts.map(function(host) {
@@ -52,6 +49,14 @@ LazyHacker.service('OnboardService', function($http) {
             chrome.tabs.update(tabData.id, {
                 url: '/select-sources.html'
             });
-        })
-    }
+        });
+    };
+
+    this.toggleSelectAll = function(context) {
+        context.selectWhat = allSelected ? 'All' : 'None';
+        allSelected = !allSelected;
+        context.banned.map(function(site) {
+            site.checked = allSelected;
+        });
+    };
 });
