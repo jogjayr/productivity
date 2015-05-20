@@ -11,16 +11,23 @@
     <!-- endbuild -->
 </head>
 
-<body>
-    <div class="container">
+<body ng-app='LazyHacker'>
+    <div class="container" ng-controller='AlternativesController'>
         <h1>Lazy Hacker</h1>
-        
+        <div>
+            <p ng-repeat='repo in githubStarred'>
+                {{repo.full_name}} - {{repo.description}}
+            </p>
+        </div>
     </div>
     <!-- build:js scripts/vendor.js -->
+    <script src='bower_components/angular/angular.min.js'></script>
     <!-- bower:js -->
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:js scripts/options.js -->
+    <script src="scripts/main.js"></script>
+    <script src="scripts/services/github.js"></script>
     <script src="scripts/alternatives.js"></script>
     <!-- endbuild -->
 </body>

@@ -1,14 +1,9 @@
-LazyHacker.controller('SourcesController', ['$scope', 'SourcesService', function($scope, SourcesService) {
+LazyHacker.controller('SourcesController', ['$scope', 'GithubService', function($scope, GithubService) {
     $scope.handleGithubSubmit = function() {
-        SourcesService.getGithubStarred(this.githubUsername).success(function(data) {
+        localStorage.setItem('githubUsername', this.githubUsername);
+        GithubService.getGithubStarred(this.githubUsername).success(function(data) {
             console.log(data);
             $scope.githubStarred = data;
         });
-    };
-}]);
-
-LazyHacker.service('SourcesService', ['$http', function($http) {
-    this.getGithubStarred = function(username) {
-        return $http.get('https://api.github.com/users/' + username + '/starred');
     };
 }]);

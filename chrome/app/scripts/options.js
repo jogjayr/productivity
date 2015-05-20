@@ -6,7 +6,18 @@ LazyHacker.controller('OnboardController', function($scope, OnboardService) {
     });
 
     $scope.saveBanned = function() {
-        OnboardService.saveBanned(this.banned);
+        chrome.runtime.sendMessage({
+            action: "saveBanned",
+            rules: OnboardService.buildRules($scope.banned)
+        }, function(success) {
+            if(success) {
+                chrome.tabs.getCurrent(function(tabData) {
+                    chrome.tabs.update(tabData.id, {
+                        url: '/select-sources.html'
+                    });
+                });
+            }
+        });
     };
 
     $scope.selectWhat = 'All';
@@ -20,38 +31,15 @@ LazyHacker.service('OnboardService', function($http) {
         return $http.get('/data/banned.json');
     };
 
-    var allSelected = false;
-
-    function buildRules(hosts) {
+    this.buildRules = function(hosts) {
         return hosts.map(function(host) {
             return {
                 hostSuffix: host.hostname
             };
         });
-    }
-    this.saveBanned = function(banned) {
-        var rules = buildRules(banned.filter(function(site) {
-            return site.checked;
-        }));
-        chrome.webNavigation.onBeforeNavigate.addListener(function(e) {
-            //ensures no nav takes place if forbidden iframe exists
-            if (e.parentFrameId !== 0) {
-                console.log(e);
-                chrome.tabs.update(e.tabId, {
-                    url: '/alternatives.html'
-                });
-            }
-        }, {
-            url: rules
-        });
-
-        chrome.tabs.getCurrent(function(tabData) {
-            chrome.tabs.update(tabData.id, {
-                url: '/select-sources.html'
-            });
-        });
     };
 
+    var allSelected = false;
     this.toggleSelectAll = function(context) {
         context.selectWhat = allSelected ? 'All' : 'None';
         allSelected = !allSelected;
