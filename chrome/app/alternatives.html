@@ -16,7 +16,7 @@
         <h1>Lazy Hacker</h1>
         <div>
             <p ng-repeat='repo in githubStarred'>
-                {{repo.full_name}} - {{repo.description}}
+                <a href='{{repo.html_url}}'>{{repo.full_name}}</a> - {{repo.description}}
             </p>
         </div>
     </div>
