@@ -15,11 +15,19 @@
 <body ng-app='LazyHacker'>
     <div class="container" ng-controller='SourcesController'>
         <h1>Pick some healthier browsing options:</h1>
-        <p>Enter your Github username</p>
-
+        <h2>Github Starred Repos</h2>
+        <p>When you're bored, you can be reminded of interesting repos you've starred before</p>
+        <label for="gh-username">Github username:</label>
         <input type="text" id='gh-username' ng-model='githubUsername' placeholder='Github username'>
         <button ng-click='handleGithubSubmit();'>Submit</button>
+        
+        <p>Select bookmarked items you've been meaning to check out: (your bookmarks remain private)</p>
+        <button ng-click="requestBookmarkPermissions();">Remind me of Productive Bookmarks</button>
+        <div ng-show="bookmarkMessage">{{bookmarkMessage}}</div>
+
         <div ng-show="showThanks">Thanks! Enjoy more productive browsing!</div>
+
+
     </div>
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
