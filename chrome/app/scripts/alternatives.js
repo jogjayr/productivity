@@ -1,3 +1,4 @@
+'use strict';
 LazyHacker.controller('AlternativesController', ['$scope', 'GithubService', function($scope, GithubService) {
     var username = localStorage.getItem('githubUsername');
 

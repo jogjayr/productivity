@@ -7,7 +7,7 @@
   "curly": true,
   "eqeqeq": true,
   "immed": true,
-  "indent": 2,
+  "indent": 4,
   "latedef": true,
   "newcap": true,
   "noarg": true,
@@ -20,6 +20,8 @@
   "smarttabs": true,
   "globals" : {
     "chrome": true,
-    "crypto": true
+    "crypto": true,
+    "LazyHacker": true,
+    "angular": true
   }
 }

@@ -1,3 +1,5 @@
+/*jshint unused:false*/
+'use strict';
 LazyHacker.controller('SourcesController', ['$scope', 'GithubService', function($scope, GithubService) {
     $scope.showThanks = false;
 

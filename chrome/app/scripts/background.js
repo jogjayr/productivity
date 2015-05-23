@@ -4,7 +4,7 @@
 // var forbiddenHosts = ['facebook.com', 'twitter.com', 'pinterest.com', 'quora.com'];
 
 
-chrome.runtime.onInstalled.addListener(function(details) {
+chrome.runtime.onInstalled.addListener(function() {
     chrome.tabs.create({
         url: '/options.html'
     });

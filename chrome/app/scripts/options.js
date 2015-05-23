@@ -7,7 +7,7 @@ LazyHacker.controller('OnboardController', function($scope, OnboardService) {
 
     $scope.saveBanned = function() {
         chrome.runtime.sendMessage({
-            action: "saveBanned",
+            action: 'saveBanned',
             rules: OnboardService.buildRules($scope.banned)
         }, function(success) {
             if(success) {
