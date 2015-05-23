@@ -19,6 +19,9 @@
                 <a href='{{repo.html_url}}'>{{repo.full_name}}</a> - {{repo.description}}
             </p>
         </div>
+        <div class="slack-off">
+            <a href="{{slackerDest}}" ng-click='procrastinateAnyway();'>No, seriously, take me to {{slackerDest}}</a>
+        </div>
     </div>
     <!-- build:js scripts/vendor.js -->
     <script src='bower_components/angular/angular.min.js'></script>
