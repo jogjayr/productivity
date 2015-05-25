@@ -17,7 +17,8 @@
 <body ng-app='LazyHacker'>
    <div class="container">
         <header class='title-bar'>
-           <img class='title-img' src="images/organic.jpg" alt="">
+        <img class='title-img' src="images/organic-100.png" alt="">
+
            <h1 class=''>Browse Healthy</h1>
            <nav class='page-nav'>
                <ul>
@@ -28,11 +29,14 @@
        </header>
        <div class="container-item" ng-controller='SourcesController'>
            <h2>Pick some healthier browsing options:</h2>
-           <h3>Github Starred Repos</h3>
+           <img src="images/Github_Logo.png" class='github-logo'>
+           <h3 class='starred-repo'>Starred Repos</h3>
            <p>When you're bored, you can be reminded of interesting repos you've starred before</p>
            <label for="gh-username">Github username:</label>
-           <input type="text" id='gh-username' ng-model='githubUsername' placeholder='Github username'>
+           <input type="text" id='gh-username' ng-model='githubUsername' placeholder='eg. octocat'>
            <button ng-click='handleGithubSubmit();'>Submit</button>
+
+           <h3>Your Bookmarks</h3>
            <p>Select bookmarked items you've been meaning to check out: (your bookmarks remain private)</p>
            <button ng-click="requestBookmarkPermissions();">Remind me of Productive Bookmarks</button>
            <div ng-show="bookmarkMessage">{{bookmarkMessage}}</div>

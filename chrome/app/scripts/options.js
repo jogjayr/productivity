@@ -3,6 +3,10 @@
 LazyHacker.controller('OnboardController', function($scope, OnboardService) {
     OnboardService.getBanned().success(function(data) {
         $scope.banned = data;
+        for (var site of $scope.banned) {
+            site.checked = true;
+        }
+        $scope.selectWhat = 'None';
     });
 
     $scope.saveBanned = function() {
@@ -20,7 +24,7 @@ LazyHacker.controller('OnboardController', function($scope, OnboardService) {
         });
     };
 
-    $scope.selectWhat = 'All';
+    
     $scope.toggleSelectAll = function() {
         OnboardService.toggleSelectAll($scope);
     };
@@ -39,7 +43,7 @@ LazyHacker.service('OnboardService', function($http) {
         });
     };
 
-    var allSelected = false;
+    var allSelected = true;
     this.toggleSelectAll = function(context) {
         context.selectWhat = allSelected ? 'All' : 'None';
         allSelected = !allSelected;

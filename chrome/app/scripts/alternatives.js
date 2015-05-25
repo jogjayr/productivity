@@ -30,4 +30,8 @@ LazyHacker.controller('AlternativesController', ['$scope', 'GithubService', func
 
     };
 
+    $scope.notInterested = function(repo) {
+        repo.interested = false;
+        GithubService.setInterest(repo.id, false);
+    };
 }]);

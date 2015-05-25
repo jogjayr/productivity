@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    font-family: Arimo;
+    /* font-family: Arimo; */
 }
 
 header {
@@ -9,7 +9,9 @@ header {
     position: relative;
     min-width: 600px;
 }
-
+.title-img {
+    background-color: #fff;
+}
 .page-nav {
     display: inline-block;
     vertical-align: bottom;
@@ -110,8 +112,54 @@ button {
     border: none;
     border-radius: 5px;
     padding: 0.5em 1em;
+    cursor: pointer;
 }
 
 button:hover {
     background-color: #6a6;
+}
+
+
+.github-logo {
+    width: 100px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.starred-repo {
+    display: inline-block;
+}
+
+.repos-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: -10px;
+}
+
+.repo-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 230px;
+    margin: 10px;
+    position: relative;
+}
+
+.repo-name {
+    font-size: 16px;
+}
+
+.github-not-interested {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: red;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.repo-container:hover > .github-not-interested {
+    display: inline;
 }

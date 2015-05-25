@@ -2,7 +2,7 @@
 'use strict';
 LazyHacker.controller('SourcesController', ['$scope', 'GithubService', function($scope, GithubService) {
     $scope.showThanks = false;
-
+    $scope.bookmarkMessage = false;
     $scope.handleGithubSubmit = function() {
         localStorage.setItem('githubUsername', this.githubUsername);
         $scope.showThanks = true;

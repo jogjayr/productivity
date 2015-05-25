@@ -1,5 +1,6 @@
 <!doctype html>
 <html>
+
 <head>
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
@@ -16,7 +17,7 @@
 <body ng-app='LazyHacker'>
     <div class="container">
         <header class='title-bar'>
-            <img class='title-img' src="images/organic.jpg" alt="">
+            <img class='title-img' src="images/organic-100.png" alt="">
             <h1 class=''>Browse Healthy</h1>
             <nav class='page-nav'>
                 <ul>
@@ -25,12 +26,13 @@
                 </ul>
             </nav>
         </header>
-
         <div class="container-item" ng-controller='AlternativesController'>
-            <h3>Here's some healthy options for you:</h3>
-            <div>
-                <p ng-repeat='repo in githubStarred'>
-                    <a href='{{repo.html_url}}'>{{repo.full_name}}</a> - {{repo.description}}
+            <h2>Here's some healthy options for you:</h2>
+            <div class='repos-container'>
+                <p ng-repeat='repo in githubStarred | filter:{interested: true} | orderBy:"-stargazers_count"' class='repo-container'>
+                    <a href='{{repo.html_url}}' class='repo-name'>{{repo.name}}</a>
+                    <span class="repo-description">{{repo.description}}</span>
+                    <span class='github-not-interested' title="This doesn't interest me" ng-click='notInterested(repo);'>X</span>
                 </p>
             </div>
             <div class="slack-off">
@@ -49,4 +51,5 @@
     <script src="scripts/alternatives.js"></script>
     <!-- endbuild -->
 </body>
+
 </html>
