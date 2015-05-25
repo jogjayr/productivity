@@ -1,34 +1,44 @@
 <!doctype html>
 <html>
-
 <head>
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
+    <link href="http://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Arimo" rel="stylesheet" type="text/css">
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css styles/main.css -->
     <link href="styles/main.css" rel="stylesheet">
     <link rel="stylesheet" href="bower_components/angular/angular-csp.css">
     <!-- endbuild -->
+    <title>Browse Healthy: Pick better options</title>
 </head>
 
 <body ng-app='LazyHacker'>
-    <div class="container" ng-controller='SourcesController'>
-        <h1>Pick some healthier browsing options:</h1>
-        <h2>Github Starred Repos</h2>
-        <p>When you're bored, you can be reminded of interesting repos you've starred before</p>
-        <label for="gh-username">Github username:</label>
-        <input type="text" id='gh-username' ng-model='githubUsername' placeholder='Github username'>
-        <button ng-click='handleGithubSubmit();'>Submit</button>
-        
-        <p>Select bookmarked items you've been meaning to check out: (your bookmarks remain private)</p>
-        <button ng-click="requestBookmarkPermissions();">Remind me of Productive Bookmarks</button>
-        <div ng-show="bookmarkMessage">{{bookmarkMessage}}</div>
-
-        <div ng-show="showThanks">Thanks! Enjoy more productive browsing!</div>
-
-
-    </div>
+   <div class="container">
+        <header class='title-bar'>
+           <img class='title-img' src="images/organic.jpg" alt="">
+           <h1 class=''>Browse Healthy</h1>
+           <nav class='page-nav'>
+               <ul>
+                   <li><a href="/about.html">About</a></li>
+                   <li><a href="/contact.html">Contact</a></li>
+               </ul>
+           </nav>
+       </header>
+       <div class="container-item" ng-controller='SourcesController'>
+           <h2>Pick some healthier browsing options:</h2>
+           <h3>Github Starred Repos</h3>
+           <p>When you're bored, you can be reminded of interesting repos you've starred before</p>
+           <label for="gh-username">Github username:</label>
+           <input type="text" id='gh-username' ng-model='githubUsername' placeholder='Github username'>
+           <button ng-click='handleGithubSubmit();'>Submit</button>
+           <p>Select bookmarked items you've been meaning to check out: (your bookmarks remain private)</p>
+           <button ng-click="requestBookmarkPermissions();">Remind me of Productive Bookmarks</button>
+           <div ng-show="bookmarkMessage">{{bookmarkMessage}}</div>
+           <div ng-show="showThanks">Thanks! Enjoy more productive browsing!</div>
+       </div>
+   </div>
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
     <script src='bower_components/angular/angular.min.js'></script>
@@ -38,8 +48,6 @@
     <script src="scripts/main.js"></script>
     <script src="scripts/services/github.js"></script>
     <script src="scripts/select-sources.js"></script>
-
     <!-- endbuild -->
 </body>
-
 </html>

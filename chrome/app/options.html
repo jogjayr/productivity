@@ -4,26 +4,44 @@
 <head>
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
+    <link href="http://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Arimo" rel="stylesheet" type="text/css">
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css styles/main.css -->
     <link href="styles/main.css" rel="stylesheet">
     <!-- endbuild -->
+    <title>Welcome to Browse Healthy</title>
 </head>
 
 <body ng-app='LazyHacker'>
+    <header class='title-bar'>
+        <img class='title-img' src="images/organic.jpg" alt="">
+        <h1 class=''>Browse Healthy</h1>
+        <nav class='page-nav'>
+            <ul>
+                <li><a href="/about.html">About</a></li>
+                <li><a href="/contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
     <div class="container">
-        <h1 class='container-item'>Lazy Hacker</h1>
-        <h2 class='container-item'>Thanks for installing Lazy Hacker</h2>
+        <h2 class='container-item'>Thanks for installing Browse Healthy!</h2>
         <div class="container-item" ng-controller='OnboardController'>
-            <p>Select some websites to avoid:</p>
+            <h3>Select some websites to avoid:</h3>
             <form>
-                <button ng-click='toggleSelectAll();'>Select {{selectWhat}}</button>
-                <p ng-repeat="site in banned">
-                    <input type='checkbox' ng-model='site.checked' id='{{site.name}}' />
-                    <label for='{{site.name}}'>{{site.name}}</label>
-                </p>
-                <button ng-click='saveBanned();'>Save</button>
+                <div>
+                    <button ng-click='toggleSelectAll();'>Select {{selectWhat}}</button>
+                </div>
+                <div class='ban-list'>
+                    <p ng-repeat="site in banned" class='banned-site'>
+                        <input type='checkbox' ng-model='site.checked' id='{{site.name}}' />
+                        <label for='{{site.name}}'>{{site.name}}</label>
+                    </p>
+                </div>
+                <div>
+                    <button ng-click='saveBanned();'>Save</button>
+                </div>
             </form>
         </div>
     </div>
@@ -37,5 +55,4 @@
     <script src="scripts/options.js"></script>
     <!-- endbuild -->
 </body>
-
 </html>

@@ -1,10 +1,10 @@
 {
   "appName": {
-    "message": "Keystone Habits",
+    "message": "Browse Healthy",
     "description": "The name of the application"
   },
   "appDescription": {
-    "message": "Helps you form productive habits instead of browsing mindlessly",
+    "message": "Feed your brain better. When you need distraction, Browse Healthy provides healthy options instead of letting you mindlessly snack on social media.",
     "description": "The description of the application"
   }
 }

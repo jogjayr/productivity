@@ -1,26 +1,41 @@
 <!doctype html>
 <html>
-
 <head>
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
+    <link href="http://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Arimo" rel="stylesheet" type="text/css">
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css styles/main.css -->
     <link href="styles/main.css" rel="stylesheet">
     <!-- endbuild -->
+    <title>Browse Healthy: Here's something healthy</title>
 </head>
 
 <body ng-app='LazyHacker'>
-    <div class="container" ng-controller='AlternativesController'>
-        <h1>Lazy Hacker</h1>
-        <div>
-            <p ng-repeat='repo in githubStarred'>
-                <a href='{{repo.html_url}}'>{{repo.full_name}}</a> - {{repo.description}}
-            </p>
-        </div>
-        <div class="slack-off">
-            <a href="{{slackerDest}}" ng-click='procrastinateAnyway();'>No, seriously, take me to {{slackerDest}}</a>
+    <div class="container">
+        <header class='title-bar'>
+            <img class='title-img' src="images/organic.jpg" alt="">
+            <h1 class=''>Browse Healthy</h1>
+            <nav class='page-nav'>
+                <ul>
+                    <li><a href="/about.html">About</a></li>
+                    <li><a href="/contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="container-item" ng-controller='AlternativesController'>
+            <h3>Here's some healthy options for you:</h3>
+            <div>
+                <p ng-repeat='repo in githubStarred'>
+                    <a href='{{repo.html_url}}'>{{repo.full_name}}</a> - {{repo.description}}
+                </p>
+            </div>
+            <div class="slack-off">
+                <a href="{{slackerDest}}" ng-click='procrastinateAnyway();'>No, seriously, take me to {{slackerDest}}</a>
+            </div>
         </div>
     </div>
     <!-- build:js scripts/vendor.js -->
@@ -34,5 +49,4 @@
     <script src="scripts/alternatives.js"></script>
     <!-- endbuild -->
 </body>
-
 </html>

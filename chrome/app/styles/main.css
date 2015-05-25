@@ -1,5 +1,83 @@
 body {
-  padding: 20px;
+    margin: 0;
+    font-family: Arimo;
+}
+
+header {
+    background-color: #008356;
+    height: 101px;
+    position: relative;
+    min-width: 600px;
+}
+
+.page-nav {
+    display: inline-block;
+    vertical-align: bottom;
+    zoom: 1;
+    /* Fix for IE7 */
+    
+    *display: inline;
+    /* Fix for IE7 */
+    
+    color: white;
+    position: absolute;
+    right: 10%;
+    bottom: 0;
+}
+
+.page-nav ul {
+    margin-bottom: 0;
+}
+
+.page-nav ul li {
+    display: inline-block;
+    vertical-align: bottom;
+    zoom: 1;
+    /* Fix for IE7 */
+    
+    *display: inline;
+    /* Fix for IE7 */
+
+    margin: 0 0 5px;
+    padding: 0 10px;
+    border-radius: 5px;
+}
+
+.page-nav ul li:hover {
+    background-color: #6a6;
+}
+
+.page-nav ul li a {
+    color: white;
+    font-size: 18px;
+}
+
+.title-img {
+    display: inline-block;
+    vertical-align: top;
+    zoom: 1;
+    /* Fix for IE7 */
+    
+    *display: inline;
+    /* Fix for IE7 */
+    
+    ;
+    height: 100px;
+    margin-left: 10%;
+    margin-right: 20px;
+}
+
+header h1 {
+    display: inline-block;
+    vertical-align: bottom;
+    zoom: 1;
+    /* Fix for IE7 */
+    *display: inline;
+    /* Fix for IE7 */
+    color: white;
+    font-family: Pacifico;
+    font-size: 36px;
+    margin-bottom: 0;
 }
 
 .container {
@@ -9,7 +87,31 @@ body {
 }
 
 .container-item {
-    margin:auto;
+    margin: 20px 10% 0 10%;
 }
 
+.ban-list {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    /*makes the flex-wrapped items left-align with the rest
+     of the container*/
+    margin-left: -10px;
+}
 
+.banned-site {
+    margin-left: 10px;
+}
+
+button {
+    background-color: #008356;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5em 1em;
+}
+
+button:hover {
+    background-color: #6a6;
+}

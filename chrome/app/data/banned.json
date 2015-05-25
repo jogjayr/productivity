@@ -43,4 +43,10 @@
 },  {
     "name": "Cracked",
     "hostname": "cracked.com"
+}, {
+    "name": "Football365",
+    "hostname": "football365.com"
+}, {
+    "name": "Reddit",
+    "hostname": "reddit.com"
 }]
