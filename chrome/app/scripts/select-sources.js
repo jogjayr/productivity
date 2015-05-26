@@ -1,26 +1,48 @@
-/*jshint unused:false*/
 'use strict';
-LazyHacker.controller('SourcesController', ['$scope', 'GithubService', function($scope, GithubService) {
-    $scope.showThanks = false;
-    $scope.bookmarkMessage = false;
-    $scope.handleGithubSubmit = function() {
-        localStorage.setItem('githubUsername', this.githubUsername);
-        $scope.showThanks = true;
-        setTimeout(function() {
-            window.close();
-        }, 1000);
-    };
+LazyHacker.controller('SourcesController', ['$scope', 'GithubService', 'PermissionsService',
+    function($scope, GithubService, PermissionsService) {
+        $scope.thanks = {
+            show: true,
+            message: ''
+        };
+        $scope.bookmarks = {
+            show: true,
+            message: ''
+        };
+        $scope.bookmarkPermission = {
+            show: true,
+            message: 'Show bookmarks when I need a distraction'
+        };
 
-    $scope.requestBookmarkPermissions = function() {
-        chrome.permissions.request({
-            permissions: ['bookmarks']
-        }, function(granted) {
-            if(granted) {
-                $scope.bookmarkMessage = 'Cool!';
-            } else {
-                $scope.bookmarkMessage = ':(';
-            }
+        PermissionsService.hasBookmarksPermission(function(hasPermission) {
+            $scope.bookmarkPermission.show = !hasPermission;
+            $scope.$apply();
         });
-    };
 
-}]);
+        $scope.handleGithubSubmit = function() {
+            GithubService.setUsername(this.githubUsername);
+            $scope.showThanks = true;
+        };
+
+        $scope.finishOnboard = function() {
+            setTimeout(function() {
+                window.close();
+            }, 1000);
+        };
+
+        $scope.getBookmarksPermission = function() {
+            PermissionsService.requestBookmarkPermissions(function(granted) {
+                if(granted) {
+                    $scope.bookmarks.message = 'Awesome!';
+                    $scope.bookmarks.show = true;
+                    $scope.bookmarkPermission.show = false;
+                } else {
+                    $scope.bookmarks.message = 'I understand if you\'re not ready for this yet. You can always change your mind later';
+                    $scope.bookmarks.show = true;
+                }
+                $scope.$apply();
+            });
+        };
+
+    }
+]);

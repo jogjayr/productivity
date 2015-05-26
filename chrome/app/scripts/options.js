@@ -23,7 +23,6 @@ LazyHacker.controller('OnboardController', function($scope, OnboardService) {
             }
         });
     };
-
     
     $scope.toggleSelectAll = function() {
         OnboardService.toggleSelectAll($scope);

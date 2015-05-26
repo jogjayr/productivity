@@ -1,10 +1,21 @@
 'use strict';
-LazyHacker.controller('AlternativesController', ['$scope', 'GithubService', function($scope, GithubService) {
-    var username = localStorage.getItem('githubUsername');
+LazyHacker.controller('AlternativesController', ['$scope', 'GithubService', 'BookmarkService', 
+    function($scope, GithubService, BookmarkService) {
+    var serviceReturnVal = GithubService.getGithubStarred();
 
-    GithubService.getGithubStarred(username).success(function(data) {
-        $scope.githubStarred = data;
-    });
+    if(typeof serviceReturnVal.success == 'function') {
+        serviceReturnVal.success(function(data) {
+            $scope.githubStarred = data;
+        });
+    } else {
+        $scope.githubStarred =[];
+        for (var repoId in serviceReturnVal) {
+            $scope.githubStarred.push(serviceReturnVal[repoId])
+        }
+    }
+
+    var bookmarks = BookmarkService.getRecentBookmarks();
+
 
     var urlParams = document.location.search;
     urlParams = urlParams.replace('?', '');
@@ -13,6 +24,7 @@ LazyHacker.controller('AlternativesController', ['$scope', 'GithubService', func
     if(urlParams[0] === 'slacker_dest'){
         $scope.slackerDest = urlParams[1];
     }
+    $scope.hasDest = $scope.slackerDest ? true: false;
 
     $scope.procrastinateAnyway = function() {
         chrome.runtime.sendMessage({
@@ -27,7 +39,6 @@ LazyHacker.controller('AlternativesController', ['$scope', 'GithubService', func
                 });
             }
         });
-
     };
 
     $scope.notInterested = function(repo) {

@@ -30,7 +30,7 @@ function expireException (hostname) {
 
 chrome.runtime.onInstalled.addListener(function() {
     chrome.tabs.create({
-        url: '/options.html'
+        url: '/welcome.html'
     });
 
     chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
@@ -43,9 +43,10 @@ chrome.runtime.onInstalled.addListener(function() {
         } else if (request.action === 'allowSlackingOff') {
             var exceptionHostname = getHostname(request.url);
             exceptions.add(exceptionHostname);
-            setTimeout(function() {
-                expireException(exceptionHostname);
-            }, EXCEPTION_TIMEOUT);
+            //TODO: Remove timeout or do something else with it
+            // setTimeout(function() {
+            //     expireException(exceptionHostname);
+            // }, EXCEPTION_TIMEOUT);
         }
     });
 });

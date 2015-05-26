@@ -1,27 +1,29 @@
 <!doctype html>
-<html>
+<html ng-app='LazyHacker'>
 
 <head>
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
     <link href="http://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Arimo" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="bower_components/angular/angular-csp.css">
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css styles/main.css -->
     <link href="styles/main.css" rel="stylesheet">
     <!-- endbuild -->
-    <title>Browse Healthy: Here's something healthy</title>
+    <title ng-if='hasDest'>Browse Healthy: Here's something healthy</title>
+    <title ng-if='!hasDest'>New Tab</title>
 </head>
 
-<body ng-app='LazyHacker'>
+<body>
     <div class="container">
-        <header class='title-bar'>
+        <header class='title-bar' ng-show='hasDest'>
             <img class='title-img' src="images/organic-100.png" alt="">
             <h1 class=''>Browse Healthy</h1>
             <nav class='page-nav'>
                 <ul>
-                    <li><a href="/about.html">About</a></li>
+                    <li><a href="/privacy.html">Privacy</a></li>
                     <li><a href="/contact.html">Contact</a></li>
                 </ul>
             </nav>
@@ -35,7 +37,7 @@
                     <span class='github-not-interested' title="This doesn't interest me" ng-click='notInterested(repo);'>X</span>
                 </p>
             </div>
-            <div class="slack-off">
+            <div class="slack-off" ng-show='hasDest'>
                 <a href="{{slackerDest}}" ng-click='procrastinateAnyway();'>No, seriously, take me to {{slackerDest}}</a>
             </div>
         </div>
@@ -48,6 +50,7 @@
     <!-- build:js scripts/options.js -->
     <script src="scripts/main.js"></script>
     <script src="scripts/services/github.js"></script>
+    <script src="scripts/services/bookmarks.js"></script>
     <script src="scripts/alternatives.js"></script>
     <!-- endbuild -->
 </body>

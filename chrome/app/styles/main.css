@@ -51,7 +51,7 @@ header {
 
 .page-nav ul li a {
     color: white;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .title-img {
@@ -106,13 +106,14 @@ header h1 {
     margin-left: 10px;
 }
 
-button {
+button, .button {
     background-color: #008356;
     color: #fff;
     border: none;
     border-radius: 5px;
     padding: 0.5em 1em;
     cursor: pointer;
+    text-decoration: none;
 }
 
 button:hover {
@@ -121,13 +122,14 @@ button:hover {
 
 
 .github-logo {
-    width: 100px;
+    width: 75px;
     display: inline-block;
-    vertical-align: top;
+    vertical-align: bottom;
 }
 
 .starred-repo {
     display: inline-block;
+    margin: 0;
 }
 
 .repos-container {

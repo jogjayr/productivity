@@ -1,13 +1,30 @@
 'use strict';
-LazyHacker.factory('storeGithubInfo', function() {
+
+
+LazyHacker.service('LocalStorage', function() {
+    this.setObject = function(key, obj) {
+        localStorage.setItem(key, JSON.stringify(obj));
+    }
+    this.getObject = function(key) {
+        var obj = localStorage.getItem(key);
+        if (obj) {
+            return JSON.parse(obj);
+        }
+        return obj;
+    };
+});
+
+
+LazyHacker.factory('storeGithubInfo', ['LocalStorage', function(LocalStorage) {
+    //interceptor service
+    //intercepts responses from Github starred API calls, and stores in localstorage
     return {
         response: function(response) {
-            var cachedInfo = localStorage.getItem('githubStarred');
-            cachedInfo = cachedInfo || '{}';
+            var cachedInfo = LocalStorage.getObject('githubStarred');
+            cachedInfo = cachedInfo || {};
             var responseData = response.data;
        
             try {
-                cachedInfo = JSON.parse(cachedInfo);
                 for (var repo of responseData) {
                     if(!cachedInfo[repo.id]) {
                         cachedInfo[repo.id] = {
@@ -15,13 +32,14 @@ LazyHacker.factory('storeGithubInfo', function() {
                             'html_url': repo.html_url,
                             'description': repo.description,
                             'stargazers_count': repo.stargazers_count,
+                            'id': repo.id,
                             'interested': true
                         };
                     } else {
                         repo.interested = cachedInfo[repo.id].interested;
                     }
                 }
-                localStorage.setItem('githubStarred', JSON.stringify(cachedInfo));
+                LocalStorage.setObject('githubStarred', cachedInfo);
             } catch(e) {
                 //Do something
                 console.log(e);
@@ -30,21 +48,35 @@ LazyHacker.factory('storeGithubInfo', function() {
             }
         }
     };
-});
+}]);
 
-LazyHacker.service('GithubService', ['$http', function($http) {
+LazyHacker.service('GithubService', ['$http', 'LocalStorage', function($http, LocalStorage) {
     this.getGithubStarred = function(username) {
-        return $http.get('https://api.github.com/users/' + username + '/starred', {cache: true});
+        username = username || this.getUsername();
+        var githubStarred = LocalStorage.getObject('githubStarred');
+        if(githubStarred) {
+            return githubStarred;
+        } else {
+            return $http.get('https://api.github.com/users/' + username + '/starred', {cache: true});
+        }
     };
     this.repoVisited = function(repoId) {
     
     };
     this.setInterest = function(repoId, hasInterest) {
-        var cachedInfo = localStorage.getItem('githubStarred');
+        var cachedInfo = LocalStorage.getObject('githubStarred');
         if(cachedInfo[repoId]) {
             cachedInfo[repoId].interested = hasInterest;
         }
+        LocalStorage.setObject('githubStarred', cachedInfo);
     };
+    this.setUsername = function(username) {
+        localStorage.setItem('githubUsername', this.githubUsername);
+    };
+
+    this.getUsername = function() {
+        localStorage.getItem('githubUsername');
+    }
 }]);
 
 
