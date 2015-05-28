@@ -46,7 +46,7 @@ header {
 }
 
 .page-nav ul li:hover {
-    background-color: #6a6;
+    background-color: #FF8C00;
 }
 
 .page-nav ul li a {
@@ -115,11 +115,13 @@ button, .button {
     cursor: pointer;
     text-decoration: none;
 }
-
-button:hover {
-    background-color: #6a6;
+button:hover, .button:hover {
+    background-color: #FF8C00;
 }
 
+.btn-red {
+    background-color: #f00;
+}
 
 .github-logo {
     width: 75px;

@@ -71,11 +71,11 @@ LazyHacker.service('GithubService', ['$http', 'LocalStorage', function($http, Lo
         LocalStorage.setObject('githubStarred', cachedInfo);
     };
     this.setUsername = function(username) {
-        localStorage.setItem('githubUsername', this.githubUsername);
+        localStorage.setItem('githubUsername', username);
     };
 
     this.getUsername = function() {
-        localStorage.getItem('githubUsername');
+        return localStorage.getItem('githubUsername');
     }
 }]);
 

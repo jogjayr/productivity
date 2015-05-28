@@ -14,14 +14,27 @@ LazyHacker.controller('SourcesController', ['$scope', 'GithubService', 'Permissi
             message: 'Show bookmarks when I need a distraction'
         };
 
+        $scope.github = {
+            submitted: false,
+            username: GithubService.getUsername()
+        };
+
+        $scope.github.editUsername = !$scope.github.username;
+
         PermissionsService.hasBookmarksPermission(function(hasPermission) {
             $scope.bookmarkPermission.show = !hasPermission;
             $scope.$apply();
         });
 
+        $scope.editGithubUsername = function() {
+            this.github.editUsername = true;
+        };
+
         $scope.handleGithubSubmit = function() {
-            GithubService.setUsername(this.githubUsername);
-            $scope.showThanks = true;
+            GithubService.setUsername(this.github.username);
+            this.showThanks = true;
+            this.github.submitted = true;
+            this.github.editUsername = false;
         };
 
         $scope.finishOnboard = function() {
@@ -37,7 +50,7 @@ LazyHacker.controller('SourcesController', ['$scope', 'GithubService', 'Permissi
                     $scope.bookmarks.show = true;
                     $scope.bookmarkPermission.show = false;
                 } else {
-                    $scope.bookmarks.message = 'I understand if you\'re not ready for this yet. You can always change your mind later';
+                    $scope.bookmarks.message = 'I understand. You can always change your mind later';
                     $scope.bookmarks.show = true;
                 }
                 $scope.$apply();
