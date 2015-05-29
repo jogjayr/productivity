@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+
+<head>
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <link href="http://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Arimo" rel="stylesheet" type="text/css">
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css styles/main.css -->
+    <link href="styles/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="bower_components/angular/angular-csp.css">
+    <!-- endbuild -->
+    <title>Browse Healthy: Pick better options</title>
+</head>
+
+<body ng-app='LazyHacker'>
+    <div class="container">
+        <header class='title-bar'>
+            <img class='title-img' src="images/organic-100.png" alt="">
+            <h1 class=''>Browse Healthy</h1>
+            <nav class='page-nav'>
+                <ul>
+                    <li class='current'><a href="/settings.html">Settings</a></li>
+                    <li><a href="/privacy.html">Privacy</a></li>
+                    <li><a href="/contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div class="container-item" ng-controller='SourcesController'>
+            <h2>Pick some healthy browsing options:</h2>
+            <div class='container-row'>
+                <div class='container-row-item'>
+                    <img src="images/Github_Logo.png" class='github-logo'>
+                    <h3 class='starred-repo'>Starred Repos</h3>
+                    <p>When you're bored, Browse Healthy will remind you to browse repos you've starred</p>
+                    <div ng-if='github.editUsername'>
+                        <label for="gh-username">Github Username:</label>
+                        <input type="text" id='gh-username' ng-model='github.username' placeholder='eg. octocat'>
+                        <button ng-click='handleGithubSubmit();'>Submit</button>
+                        <img src="images/Yes_check.png" alt="Green check mark" ng-show='github.submitted'>
+                    </div>
+                    <div ng-if="!github.editUsername && github.username">
+                        <h3>Github username:</h3>
+                        <span>{{github.username}}</span>
+                        <button ng-click='editGithubUsername();'>Edit</button>
+                    </div>
+                </div>
+                <div class="container-row-item">
+                    <div ng-show="bookmarkPermission.show">
+                        <h3>Your Bookmarks</h3>
+                        <p>Select bookmarked items you've been meaning to check out: (your bookmarks remain private)</p>
+                        <button ng-click="getBookmarksPermission();">{{bookmarkPermission.message}}</button>
+                    </div>
+                    <div ng-show="{{bookmarks.show}}">{{bookmarks.message}}</div>
+                    <div ng-show="{{thanks.show}}">{{thanks.message}}</div>
+                </div>
+            </div>
+            <p>
+                <button class='btn-red' ng-click='finishOnboard();'>Done</button>
+            </p>
+        </div>
+    </div>
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src='bower_components/angular/angular.min.js'></script>
+    <script src="bower_components/underscore/underscore-min.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:js scripts/options.js -->
+    <script src="scripts/main.js"></script>
+    <script src="scripts/services/localstorage.js"></script>
+    <script src="scripts/services/github.js"></script>
+    <script src="scripts/services/bookmarks.js"></script>
+    <script src="scripts/services/permissions.js"></script>
+    <script src="scripts/settings.js"></script>
+    <!-- endbuild -->
+</body>
+
+</html>

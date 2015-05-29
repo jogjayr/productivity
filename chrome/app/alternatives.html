@@ -28,13 +28,20 @@
                 </ul>
             </nav>
         </header>
-        <div class="container-item" ng-controller='AlternativesController'>
+        <div class="container-item container align-items-start" ng-controller='AlternativesController'>
             <h2>Here's some healthy options for you:</h2>
-            <div class='repos-container'>
-                <p ng-repeat='repo in githubStarred | filter:{interested: true} | orderBy:"-stargazers_count"' class='repo-container'>
-                    <a href='{{repo.html_url}}' class='repo-name'>{{repo.name}}</a>
-                    <span class="repo-description">{{repo.description}}</span>
-                    <span class='github-not-interested' title="This doesn't interest me" ng-click='notInterested(repo);'>X</span>
+            <div class='alternatives-container'>
+                <p ng-repeat='repo in githubStarred | filter:{interested: true} | orderBy:"-stargazers_count"' class='alternative-container'>
+                    <a href='{{repo.html_url}}' class='alternative-name'>{{repo.name}}</a>
+                    <span class="alternative-description">{{repo.description}}</span>
+                    <span class='not-interested' title="This doesn't interest me" ng-click='notInterested(repo, "repo");'>X</span>
+                </p>
+            </div>
+            <div class="alternatives-container">
+                <p ng-repeat="bookmark in recentBookmarks | filter:{interested: true} | orderBy:'-dateAdded'" class="alternative-container">
+                    <a href="{{bookmark.url}}" >{{bookmark.title}}</a>
+                    <!-- <span class="repo-description"></span> -->
+                    <span class="not-interested" title="This doesn't interest me" ng-click='notInterested(bookmark, "bookmark");'>X</span>
                 </p>
             </div>
             <div class="slack-off" ng-show='hasDest'>
@@ -44,11 +51,14 @@
     </div>
     <!-- build:js scripts/vendor.js -->
     <script src='bower_components/angular/angular.min.js'></script>
+    <script src="bower_components/underscore/underscore-min.js"></script>
+    <script src="bower_components/object-assign/index.js"></script>
     <!-- bower:js -->
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:js scripts/options.js -->
     <script src="scripts/main.js"></script>
+    <script src="scripts/services/localstorage.js"></script>
     <script src="scripts/services/github.js"></script>
     <script src="scripts/services/bookmarks.js"></script>
     <script src="scripts/alternatives.js"></script>

@@ -1,3 +1,4 @@
+'use strict';
 LazyHacker.service('PermissionsService', function() {
     this.requestBookmarkPermissions = function(callback) {
         chrome.permissions.request({

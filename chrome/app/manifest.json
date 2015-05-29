@@ -13,11 +13,13 @@
     "default_locale": "en",
     "background": {
         "scripts": [
+            "scripts/services/bookmarks.js",
+            "scripts/services/localstorage.js",
             "scripts/chromereload.js",
             "scripts/background.js"
         ]
     },
-    "options_page": "select-sources.html",
+    "options_page": "settings.html",
     "permissions": [
         "tabs"
     ],

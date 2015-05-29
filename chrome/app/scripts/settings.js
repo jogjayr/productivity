@@ -1,6 +1,6 @@
 'use strict';
-LazyHacker.controller('SourcesController', ['$scope', 'GithubService', 'PermissionsService',
-    function($scope, GithubService, PermissionsService) {
+LazyHacker.controller('SourcesController', ['$scope', 'GithubService', 'PermissionsService', 'BookmarkService',
+    function($scope, GithubService, PermissionsService, BookmarkService) {
         $scope.thanks = {
             show: true,
             message: ''
@@ -46,9 +46,10 @@ LazyHacker.controller('SourcesController', ['$scope', 'GithubService', 'Permissi
         $scope.getBookmarksPermission = function() {
             PermissionsService.requestBookmarkPermissions(function(granted) {
                 if(granted) {
-                    $scope.bookmarks.message = 'Awesome!';
+                    $scope.bookmarks.message = 'Bookmarks added!';
                     $scope.bookmarks.show = true;
                     $scope.bookmarkPermission.show = false;
+                    BookmarkService.updateRecentBookmarks();
                 } else {
                     $scope.bookmarks.message = 'I understand. You can always change your mind later';
                     $scope.bookmarks.show = true;
