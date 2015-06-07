@@ -18,11 +18,15 @@
 
 <body>
     <div class="container">
-        <header class='title-bar' ng-show='hasDest'>
+        <header class='title-bar'>
             <img class='title-img' src="images/organic-100.png" alt="">
-            <h1 class=''>Browse Healthy</h1>
+            <div class="header-text">
+                <h1 class='header-title'>Browse Healthy</h1>
+                <h4 class='header-subtitle'>Gluten-free, locally-grown, non-GMO</h4>
+            </div>
             <nav class='page-nav'>
                 <ul>
+                    <li><a href="/settings.html">Settings</a></li>
                     <li><a href="/privacy.html">Privacy</a></li>
                     <li><a href="/contact.html">Contact</a></li>
                 </ul>
@@ -31,7 +35,7 @@
         <div class="container-item container align-items-start" ng-controller='AlternativesController'>
             <h2>Here's some healthy options for you:</h2>
             <div class='alternatives-container'>
-                <p ng-repeat='repo in githubStarred | filter:{interested: true} | orderBy:"-stargazers_count"' class='alternative-container'>
+                <p ng-repeat='repo in githubStarred | filter:{interested: true} | orderBy:"-stargazers_count" | limitTo:5' class='alternative-container'>
                     <a href='{{repo.html_url}}' class='alternative-name'>{{repo.name}}</a>
                     <span class="alternative-description">{{repo.description}}</span>
                     <span class='not-interested' title="This doesn't interest me" ng-click='notInterested(repo, "repo");'>X</span>
@@ -39,7 +43,7 @@
             </div>
             <div class="alternatives-container">
                 <p ng-repeat="bookmark in recentBookmarks | filter:{interested: true} | orderBy:'-dateAdded'" class="alternative-container">
-                    <a href="{{bookmark.url}}" >{{bookmark.title}}</a>
+                    <a href="{{bookmark.url}}" class='alternative-name'>{{bookmark.title}}</a>
                     <!-- <span class="repo-description"></span> -->
                     <span class="not-interested" title="This doesn't interest me" ng-click='notInterested(bookmark, "bookmark");'>X</span>
                 </p>

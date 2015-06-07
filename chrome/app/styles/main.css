@@ -10,6 +10,9 @@ header {
     width: 100%;
     display: flex;
 }
+a, a:visited {
+    color: #00f;
+}
 .header-text {
     color: white;
     display: flex;
@@ -153,6 +156,7 @@ button:hover, .button:hover {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    margin-left: -10px;
 }
 
 .alternative-container {

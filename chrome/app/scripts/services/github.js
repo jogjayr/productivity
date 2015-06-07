@@ -53,8 +53,11 @@ LazyHacker.service('GithubService', ['$http', 'LocalStorage', function($http, Lo
     };
     this.setInterest = function(repoId, hasInterest) {
         var cachedInfo = LocalStorage.getSyncedObject('githubStarred');
+        var repoCopy = {};
         if(cachedInfo[repoId]) {
-            cachedInfo[repoId].interested = hasInterest;
+            Object.assign(repoCopy, cachedInfo[repoId]);
+            repoCopy.interested = false;
+            cachedInfo[repoId] = repoCopy;
         }
     };
     this.setUsername = function(username) {

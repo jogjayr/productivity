@@ -35,6 +35,7 @@ LazyHacker.controller('SourcesController', ['$scope', 'GithubService', 'Permissi
             this.showThanks = true;
             this.github.submitted = true;
             this.github.editUsername = false;
+            GithubService.getGithubStarred();
         };
 
         $scope.finishOnboard = function() {

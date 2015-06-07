@@ -10,17 +10,18 @@ LazyHacker.service('LocalStorage', function() {
         if (obj) {
             return JSON.parse(obj);
         }
-        return obj;
+        return false;
     };
 
     this.getSyncedObject = function(key) {
         var obj = this.getObject(key);
+        var self = this;
+        obj = obj || {};
 
-        if(obj) {
-            Object.observe(obj, function() {
-                localStorage.setItem(key, JSON.stringify(obj));
-            });
-            return obj;
-        }
+        Object.observe(obj, function() {
+            self.setObject(key, obj);
+        });
+        return obj;
+        
     };
 });
