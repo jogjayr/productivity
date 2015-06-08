@@ -142,8 +142,12 @@ module.exports = function(grunt) {
                 dest: '<%= config.dist %>'
             },
             html: [
-                '<%= config.app %>/popup.html',
-                '<%= config.app %>/options.html'
+                '<%= config.app %>/alternatives.html',
+                '<%= config.app %>/contact.html',
+                '<%= config.app %>/options.html',
+                '<%= config.app %>/privacy.html',
+                '<%= config.app %>/settings.html',
+                '<%= config.app %>/welcome.html'
             ]
         },
 
@@ -200,31 +204,6 @@ module.exports = function(grunt) {
             }
         },
 
-        // By default, your `index.html`'s <!-- Usemin block --> will take care of
-        // minification. These next options are pre-configured if you do not wish
-        // to use the Usemin blocks.
-        // cssmin: {
-        //   dist: {
-        //     files: {
-        //       '<%= config.dist %>/styles/main.css': [
-        //         '<%= config.app %>/styles/{,*/}*.css'
-        //       ]
-        //     }
-        //   }
-        // },
-        // uglify: {
-        //   dist: {
-        //     files: {
-        //       '<%= config.dist %>/scripts/scripts.js': [
-        //         '<%= config.dist %>/scripts/scripts.js'
-        //       ]
-        //     }
-        //   }
-        // },
-        // concat: {
-        //   dist: {}
-        // },
-
         // Copies remaining files to places other tasks can use
         copy: {
             dist: {
@@ -279,7 +258,7 @@ module.exports = function(grunt) {
                 options: {
                     archive: function() {
                         var manifest = grunt.file.readJSON('app/manifest.json');
-                        return 'package/Keystone Habits-' + manifest.version + '.zip';
+                        return 'package/Browse Healthy-' + manifest.version + '.zip';
                     }
                 },
                 files: [{
@@ -310,7 +289,7 @@ module.exports = function(grunt) {
         'clean:dist',
         'chromeManifest:dist',
         'useminPrepare',
-        'concurrent:dist',
+        // 'concurrent:dist',
         'cssmin',
         'concat',
         'uglify',

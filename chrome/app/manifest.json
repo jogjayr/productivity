@@ -1,30 +1,30 @@
 {
-    "name": "__MSG_appName__",
-    "version": "0.0.3",
-    "manifest_version": 2,
-    "description": "__MSG_appDescription__",
-    "icons": {
-        "16": "images/icon-16.png",
-        "128": "images/icon-128.png"
-    },
-    "chrome_url_overrides": {
-        "newtab": "alternatives.html"
-    },
-    "default_locale": "en",
-    "background": {
-        "scripts": [
-            "scripts/services/bookmarks.js",
-            "scripts/services/localstorage.js",
-            "scripts/chromereload.js",
-            "scripts/background.js"
-        ]
-    },
-    "options_page": "settings.html",
-    "permissions": [
-        "tabs"
-    ],
-    "optional_permissions": [
-        "bookmarks",
-        "webNavigation"
+  "name": "__MSG_appName__",
+  "version": "0.0.9",
+  "manifest_version": 2,
+  "description": "__MSG_appDescription__",
+  "icons": {
+    "16": "images/icon-16.png",
+    "128": "images/icon-128.png"
+  },
+  "chrome_url_overrides": {
+    "newtab": "alternatives.html"
+  },
+  "default_locale": "en",
+  "background": {
+    "scripts": [
+      "scripts/services/bookmarks.js",
+      "scripts/services/localstorage.js",
+      "scripts/chromereload.js",
+      "scripts/background.js"
     ]
+  },
+  "options_page": "settings.html",
+  "permissions": [
+    "tabs"
+  ],
+  "optional_permissions": [
+    "bookmarks",
+    "webNavigation"
+  ]
 }
