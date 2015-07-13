@@ -2,10 +2,11 @@
 <html>
 
 <head>
-    <!-- build:css styles/vendor.css -->
-    <!-- bower:css -->
     <link href="http://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Arimo" rel="stylesheet" type="text/css">
+
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css styles/main.css -->
@@ -39,7 +40,7 @@
                         <label for="gh-username">Github Username:</label>
                         <input type="text" id='gh-username' ng-model='github.username' placeholder='eg. octocat'>
                         <button ng-click='handleGithubSubmit();'>Submit</button>
-                        <img src="images/Yes_check.png" alt="Green check mark" ng-show='github.submitted'>
+                       
                     </div>
                     <div ng-if="!github.editUsername && github.username">
                         <h3>Github username:</h3>
@@ -47,9 +48,9 @@
                         <button ng-click='editGithubUsername();'>Edit</button>
                     </div>
                 </div>
-                <div class="container-row-item">
+                <div class="container-row-item ml10">
                     <div ng-show="bookmarkPermission.show">
-                        <h3>Your Bookmarks</h3>
+                        <h3 class='no-margin-top'>Your Bookmarks</h3>
                         <p>Select bookmarked items you've been meaning to check out: (your bookmarks remain private)</p>
                         <button ng-click="getBookmarksPermission();">{{bookmarkPermission.message}}</button>
                     </div>
@@ -62,13 +63,14 @@
             </p>
         </div>
     </div>
-    <!-- build:js scripts/vendor.js -->
+    <!-- build:js scripts/settings-vendor.js -->
     <!-- bower:js -->
     <script src='bower_components/angular/angular.min.js'></script>
     <script src="bower_components/underscore/underscore-min.js"></script>
+
     <!-- endbower -->
     <!-- endbuild -->
-    <!-- build:js scripts/options.js -->
+    <!-- build:js scripts/settings.js -->
     <script src="scripts/main.js"></script>
     <script src="scripts/services/localstorage.js"></script>
     <script src="scripts/services/github.js"></script>

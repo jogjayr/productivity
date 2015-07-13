@@ -1,8 +1,5 @@
 'use strict';
 
-// var EXTENSION_ID = chrome.runtime.id;
-// var forbiddenHosts = ['facebook.com', 'twitter.com', 'pinterest.com', 'quora.com'];
-
 var exceptions = new Set();
 var EXCEPTION_TIMEOUT = 1000 * 60 * 2; //2 minutes exception
 function getHostname(url) {

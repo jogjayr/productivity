@@ -2,14 +2,15 @@
 <html ng-app='LazyHacker'>
 
 <head>
-    <!-- build:css styles/vendor.css -->
-    <!-- bower:css -->
     <link href="http://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Arimo" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="bower_components/angular/angular-csp.css">
+
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="bower_components/angular/angular-csp.css">
     <link href="styles/main.css" rel="stylesheet">
     <!-- endbuild -->
     <title ng-if='hasDest'>Browse Healthy: Here's something healthy</title>
@@ -48,19 +49,19 @@
                     <span class="not-interested" title="This doesn't interest me" ng-click='notInterested(bookmark, "bookmark");'>X</span>
                 </p>
             </div>
-            <div class="slack-off" ng-show='hasDest'>
+<!--             <div class="slack-off" ng-show='hasDest'>
                 <a href="{{slackerDest}}" ng-click='procrastinateAnyway();'>No, seriously, take me to {{slackerDest}}</a>
-            </div>
+            </div> -->
         </div>
     </div>
-    <!-- build:js scripts/vendor.js -->
+    <!-- build:js scripts/alternatives-vendor.js -->
     <script src='bower_components/angular/angular.min.js'></script>
     <script src="bower_components/underscore/underscore-min.js"></script>
     <script src="bower_components/object-assign/index.js"></script>
     <!-- bower:js -->
     <!-- endbower -->
     <!-- endbuild -->
-    <!-- build:js scripts/options.js -->
+    <!-- build:js scripts/alternatives.js -->
     <script src="scripts/main.js"></script>
     <script src="scripts/services/localstorage.js"></script>
     <script src="scripts/services/github.js"></script>

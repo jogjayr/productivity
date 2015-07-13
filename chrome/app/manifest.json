@@ -1,6 +1,6 @@
 {
   "name": "__MSG_appName__",
-  "version": "0.0.9",
+  "version": "0.0.26",
   "manifest_version": 2,
   "description": "__MSG_appDescription__",
   "icons": {
@@ -13,18 +13,15 @@
   "default_locale": "en",
   "background": {
     "scripts": [
-      "scripts/services/bookmarks.js",
-      "scripts/services/localstorage.js",
       "scripts/chromereload.js",
       "scripts/background.js"
     ]
   },
   "options_page": "settings.html",
-  "permissions": [
-    "tabs"
-  ],
+  "permissions": [],
   "optional_permissions": [
     "bookmarks",
     "webNavigation"
-  ]
+  ],
+  "short_name": "Browse Healt"
 }

@@ -3,8 +3,8 @@
 LazyHacker.controller('OnboardController', function($scope, OnboardService) {
     OnboardService.getBanned().success(function(data) {
         $scope.banned = data;
-        for (var site of $scope.banned) {
-            site.checked = true;
+        for (var i = 0; i < $scope.banned.length; i++) {
+            $scope.banned[i].checked = true;
         }
         $scope.selectWhat = 'None';
     });

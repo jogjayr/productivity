@@ -124,7 +124,7 @@ a, a:visited {
     margin-left: 10px;
 }
 
-button, .button {
+button, .button, a.button {
     background-color: #008356;
     color: #fff;
     border: none;
@@ -188,4 +188,10 @@ button:hover, .button:hover {
 
 .align-items-start {
     align-items: flex-start;
+}
+.no-margin-top {
+    margin-top: 0;
+}
+.ml10 {
+    margin-left: 10px;
 }

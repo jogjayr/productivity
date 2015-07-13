@@ -9,7 +9,8 @@ LazyHacker.factory('storeGithubInfo', ['LocalStorage', '_', function(LocalStorag
             var responseData = response.data;
        
             try {
-                for (var repo of responseData) {
+                for (var i = 0; i < responseData.length; i++) {
+                    var repo = responseData[i];
                     if(!cachedInfo[repo.id]) {
                         cachedInfo[repo.id] = {
                             name: repo.name,
