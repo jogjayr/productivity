@@ -290,7 +290,6 @@ module.exports = function(grunt) {
         'clean:dist',
         'chromeManifest:dist',
         'useminPrepare',
-        // 'concurrent:dist',
         'cssmin',
         'concat',
         'uglify',
