@@ -80,11 +80,11 @@ module.exports = function(grunt) {
             },
             test: {
                 options: {
-                    open: false,
                     base: [
                         'test',
                         '<%= config.app %>'
                     ]
+                    // ,keepalive: true
                 }
             }
         },
@@ -120,7 +120,10 @@ module.exports = function(grunt) {
             all: {
                 options: {
                     run: true,
-                    urls: ['http://localhost:<%= connect.options.port %>/index.html']
+                    urls: ['http://localhost:<%= connect.options.port %>/index.html'],
+                    options: {
+                        log: true
+                    }
                 }
             }
         },

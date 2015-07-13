@@ -18,16 +18,26 @@
 
     <!-- bower:js -->
     <!-- endbower -->
-
+    <script>
+        console.log('here');
+    </script>
     <!-- include source files here... -->
     <script src="bower_components/angular/angular.min.js"></script>
-    <script src="bower_components/angular/angular-mocks/angular-mocks.js"></script>
+    <script src="bower_components/angular-mocks/angular-mocks.js"></script>
+    <script src="bower_components/underscore/underscore-min.js"></script>
     <script src="scripts/main.js"></script>
+    <script src="scripts/services/localstorage.js"></script>
     <script src="scripts/services/github.js"></script>
 
     <!-- include spec files here... -->
     <script src="spec/test.js"></script>
 
-    <script>mocha.run()</script>
+    <!-- run mocha after all test are loaded -->
+    <script type="text/javascript" charset="utf-8">
+      // Only tests run in real browser, injected script run if options.run == true
+      if (navigator.userAgent.indexOf('PhantomJS') < 0) {
+        mocha.run();
+      }
+    </script>
 </body>
 </html>
