@@ -166,6 +166,7 @@ button:hover, .button:hover {
     width: 230px;
     margin: 10px;
     position: relative;
+    overflow:hidden;
 }
 
 .alternative-name {
