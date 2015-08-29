@@ -36,7 +36,7 @@
         <div class="container-item container align-items-start" ng-controller='AlternativesController'>
             <h2>Here's some healthy options for you:</h2>
             <div class='alternatives-container'>
-                <p ng-repeat='repo in githubStarred | filter:{interested: true} | orderBy:"-stargazers_count" | limitTo:5' class='alternative-container'>
+                <p ng-repeat='repo in githubStarred | filter:{interested: true} | orderBy:"-stargazers_count" | limitTo:10' class='alternative-container'>
                     <a href='{{repo.html_url}}' class='alternative-name'>{{repo.name}}</a>
                     <span class="alternative-description">{{repo.description}}</span>
                     <span class='not-interested' title="This doesn't interest me" ng-click='notInterested(repo, "repo");'>X</span>
